@@ -10,7 +10,7 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck,  (req, res, next) => {
     // res.send('welcome to profile page' + req.user.username)
-    res.render('profile')
+    res.render('profile', { user:  req.user })
 })
 
 module.exports = router
