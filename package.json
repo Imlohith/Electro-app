@@ -1,0 +1,26 @@
+{
+  "name": "Electro-app",
+  "version": "1.0.0",
+  "description": "A product prize comparison web-app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lohithkuma/Electro-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lohithkuma/Electro-app/issues"
+  },
+  "homepage": "https://github.com/lohithkuma/Electro-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9"
+  }
+}
