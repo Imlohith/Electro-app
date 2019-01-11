@@ -4,7 +4,8 @@
   "description": "A product prize comparison web-app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,13 @@
   "homepage": "https://github.com/lohithkuma/Electro-app#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "nodemon": "^1.18.9"
+    "mongoose": "^5.4.3",
+    "nodemon": "^1.18.9",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1"
   }
 }

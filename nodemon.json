@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "electro-app",
+        "MONGO_PASS": "2qCKJSpnMHH6BJjL",
+        "MONGO_DB": "eletroDB"
+    }
+}
