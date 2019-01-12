@@ -10,7 +10,11 @@ const userAuth = new Schema({
    facebookid: {
        type: Number,
        require: true
-   }
+   },
+   email: {
+       type: String,
+       require: true
+   }    
 })
 
 module.exports = mongoose.model('User', userAuth)

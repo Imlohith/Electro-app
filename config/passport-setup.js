@@ -36,7 +36,8 @@ passport.use(
             } else {
                 const user = new User({
                     username: profile.displayName,
-                    facebookid: profile.id
+                    facebookid: profile.id,
+                    email: profile._json.email
                 })
                 user.save()
                 .then((result) => {
