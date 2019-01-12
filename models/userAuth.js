@@ -7,7 +7,7 @@ const userAuth = new Schema({
        type: String,
        required: true
    },
-   facebookid: {
+    socialid: {
        type: Number,
        require: true
    },

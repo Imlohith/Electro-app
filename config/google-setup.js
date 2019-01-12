@@ -1,10 +1,10 @@
 const passport = require('passport')
-const FacebooStratagy =  require('passport-facebook')
+const GoogleStratagy = require('passport-google-oauth20').Strategy;
 
 //models
 const User = require('../models/userAuth')
 
-const keys = require('../config/keys')
+const keys = require('./keys')
 
 passport.serializeUser((user, done) => {
     done(null, user.id)
@@ -21,14 +21,13 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
-    new FacebooStratagy({
-        clientID: keys.facebook.clientID,
-        clientSecret: keys.facebook.ClientSecret,
-        callbackURL: '/auth/facebook/redirect',
-        profileFields: ['id', 'displayName', 'photos', 'email', 'gender']
+    new GoogleStratagy({
+        clientID: keys.google.clientID,
+        clientSecret: keys.google.clientSecret,
+        callbackURL: '/auth/google/redirect',
     }, (accessToken, refreshToken, profile, done) => {
         console.log(profile)
-        User.findOne({socialid: profile.id})
+        User.findOne({socialid: profile.id })
         .then((currentUser) => {
             if(currentUser) {
                console.log('user alredy exixts')
@@ -37,7 +36,7 @@ passport.use(
                 const user = new User({
                     username: profile.displayName,
                     socialid: profile.id,
-                    email: profile._json.email
+                    email: profile.emails[0].value
                 })
                 user.save()
                 .then((result) => {

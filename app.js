@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const facebookStratagy = require('./config/passport-setup')
+const googleStratagy = require('./config/google-setup')
 const mongoose = require('mongoose')
 const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
