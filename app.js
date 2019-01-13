@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const facebookStratagy = require('./config/passport-setup')
 const googleStratagy = require('./config/google-setup')
+const localStratagy = require('./config/local-setup')
 const mongoose = require('mongoose')
 const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
@@ -17,7 +18,9 @@ const app = express();
 app.set('view engine', 'ejs')
 
 //use middleware 
+app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
+
 app.use(cookieSession({
   maxAge: 10 * 10 * 60 * 1000,
   keys: [keys.sessionCookie.cookie]
@@ -44,6 +47,6 @@ mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0-ppdu9
     })
   })
   .catch(err => {
-
+     throw err
   })
 
