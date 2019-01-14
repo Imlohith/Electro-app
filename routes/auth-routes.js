@@ -19,10 +19,10 @@ router.get('/signup', (req, res, next) => {
     failureRedirect : '/auth/signup', // redirect back to the signup page if there is an error
 }));
 
-router.post('/login', passport.authenticate('local.login', {
-    successRedirect: '/profile',
-    failureRedirect: '/'
-  }));
+// router.post('/login', passport.authenticate('local.login', {
+//     successRedirect: '/profile',
+//     failureRedirect: '/'
+//   }));
 
 router.get('/logout', (req, res, next) => {
     req.logout();

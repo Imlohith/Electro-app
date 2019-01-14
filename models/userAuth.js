@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 const userAuth = new Schema({
    username: {
-       type: String
+       type: String,
+       required: true
    },
     socialid: {
        type: Number
@@ -15,8 +16,7 @@ const userAuth = new Schema({
        require: true
    },
    password: {
-       type: String,
-       required: true
+       type: String
    }    
 })
 

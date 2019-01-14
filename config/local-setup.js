@@ -22,6 +22,7 @@ passport.use('local-signup', new LocalStrategy({
     passwordField : 'password',
     passReqToCallback : true
 }, function(req, email, password, done) {
+    console.log(req.body.username)
     // asynchronous
     // User.findOne wont fire unless data is sent back
     process.nextTick(function() {
@@ -41,8 +42,8 @@ passport.use('local-signup', new LocalStrategy({
             // if there is no user with that email
             // create the user
             var newUser = new User();
-
             // set the user's local credentials
+            newUser.username = req.body.username
             newUser.email  = email;
             newUser.password = newUser.excryptPass(password);
 
