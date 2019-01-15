@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
 const passport = require('passport')
+const path = require('path')
 
 //imports 
 const authRoutes = require('./routes/auth-routes')
@@ -20,6 +21,8 @@ app.set('view engine', 'ejs')
 //use middleware 
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   maxAge: 10 * 10 * 60 * 1000,
