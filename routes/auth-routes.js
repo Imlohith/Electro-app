@@ -13,6 +13,18 @@ router.get('/signup', (req, res, next) => {
     res.render('signup')
 })
 
+router.get('/lookup', (req, res, next) => {
+    res.render('lookup')
+})
+
+router.get('/register', (req, res, next) => {
+    res.render('register')
+  })
+
+router.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/auth/login', // redirect back to the signup page if there is an error
+}));
  // process the signup form
  router.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/profile', // redirect to the secure profile section
