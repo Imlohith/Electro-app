@@ -38,7 +38,7 @@ app.use('/profile', profileRoutes);
 
 //basic routes 
 app.get('/', (req, res, next) => {
-  res.render('index')
+  res.render('home')
 })
 
 mongoose.connect(`
