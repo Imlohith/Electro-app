@@ -23,17 +23,17 @@ passport.use('local-login', new LocalStratery({
     User.findOne({email: email})
     .then((err, user) => {
         if(err) {
-            return done(null, err)
+            return done(null, err, req.flash('unkonown', 'there was an error, please try after sometime'))
         } 
         if(!user) {
             console.log(user)
-            return done(null, false)
+            return done(null, false, req.flash('NotExists', 'no user exixts'))
         }
         if(!user.validpass(password)){
-            return done(null, false)
+            return done(null, false, req.flash('passFail', 'password not matches'))
         }
         if(user) {
-            done(null, user)
+            done(null, user, req.flash('success', 'login success'))
         }
     })
     .catch(err => {
