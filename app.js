@@ -9,6 +9,8 @@ const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
 const passport = require('passport')
 const path = require('path')
+const messages = require('express-messages')
+const flash = require('connect-flash')
 
 //imports 
 const authRoutes = require('./routes/auth-routes')
@@ -32,6 +34,9 @@ app.use(cookieSession({
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(flash())
+
 
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);

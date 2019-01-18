@@ -6,21 +6,23 @@ const passport = require('passport')
 // }))
 
 router.get('/login', (req, res, next) => {
-    res.render('login')
-})
+    res.render('login', {message: req.flash('signupSuccess')})
+}) 
 
 router.get('/signup', (req, res, next) => {
-    res.render('signup')
+    res.render('signup', { message: req.flash('signupmsg') })
 })
 
 router.post('/login', passport.authenticate('local-login', {
     successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/auth/login', // redirect back to the signup page if there is an error
+    failureRedirect : '/auth/login', // redirect back to the signup page if there is an error,
+    failureFlash: true
 }));
  // process the signup form
  router.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/auth/login', // redirect to the secure profile section
-    failureRedirect : '/auth/signup', // redirect back to the signup page if there is an error
+    failureRedirect : '/auth/signup', // redirect back to the signup page if there is an error,
+    failureFlash: true
 }));
 
 // router.post('/login', passport.authenticate('local.login', {

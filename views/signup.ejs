@@ -30,6 +30,9 @@
     <form class="form-signin" action="/auth/signup" method="POST">
         <div class="text-center mb-4">
             <img class="mb-4" src="/bower_components/img/bootstrap-solid.svg" alt="" width="72" height="72">
+            <%  if(message.length > 0) { %>
+                <div class="alert alert-danger"> <%= message %></div>
+             <% } %>
         </div>
         <div class="form-label-group">
             <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
