@@ -9,7 +9,6 @@ const cookieSession = require('cookie-session')
 const keys = require('./config/keys')
 const passport = require('passport')
 const path = require('path')
-const messages = require('express-messages')
 const flash = require('connect-flash')
 
 //imports 
