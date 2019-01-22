@@ -6,7 +6,11 @@ const passport = require('passport')
 // }))
 
 router.get('/login', (req, res, next) => {
-    res.render('login', {message: req.flash('signupSuccess')})
+    res.render('login', 
+    {message: req.flash('signupSuccess'),
+    userExits: req.flash('userExits'),
+    fail: req.flash('fail')
+    })
 }) 
 
 router.get('/signup', (req, res, next) => {
@@ -25,10 +29,6 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true
 }));
 
-// router.post('/login', passport.authenticate('local.login', {
-//     successRedirect: '/profile',
-//     failureRedirect: '/'
-//   }));
 
 router.get('/logout', (req, res, next) => {
     req.logout();
@@ -48,6 +48,5 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/redirect', passport.authenticate('google'), (req, res, next) => {
     res.redirect('/profile/')
 })
-
 
 module.exports = router;

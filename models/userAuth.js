@@ -23,8 +23,10 @@ const userAuth = new Schema({
 userAuth.methods.excryptPass = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
 }
-userAuth.methods.validpass = (password) => {
-  return bcrypt.compareSync(password, this.password)
+
+userAuth.methods.validPass = function(password) {
+    console.log(this.password)
+    return bcrypt.compareSync(password, this.password)
 }
 
 module.exports = mongoose.model('User', userAuth)

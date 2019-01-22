@@ -23,7 +23,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new FacebooStratagy({
         clientID: keys.facebook.clientID,
-        clientSecret: keys.facebook.ClientSecret,
+        clientSecret: keys.facebook.clientSecrect,
         callbackURL: '/auth/facebook/redirect',
         profileFields: ['id', 'displayName', 'photos', 'email', 'gender']
     }, (accessToken, refreshToken, profile, done) => {

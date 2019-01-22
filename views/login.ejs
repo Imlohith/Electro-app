@@ -2,16 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/css/float-label.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/css/float-label.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
+  .social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -23,34 +55,58 @@
       }
     }
   </style>
+
 <body>
-    <form class="form-signin" action="/auth/login" method="POST">
-        <div class="text-center mb-4">
-          <img class="mb-4" src="/bower_components/img/bootstrap-solid.svg" alt="" width="72" height="72">
-          <%  if(message.length > 0) { %>
-            <div class="alert alert-success"> <%= message %></div>
-         <% } %>
+  <form class="form-signin" action="/auth/login" method="POST">
+    <div class="text-center mb-4">
+      <a href="/"><img class="mb-4" src="/bower_components/img/bootstrap-solid.svg" alt="" width="72" height="72"></a> 
+      <%  if(message.length > 0) { %>
+      <div class="alert alert-success">
+        <%= message %>
+      </div>
+      <% } %>
+      <%  if(userExits.length > 0) { %>
+        <div class="alert alert-danger">
+          <%= userExits %>
         </div>
-        <div class="form-label-group">
-          <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputEmail">Email address</label>
-        </div> 
-      
-        <div class="form-label-group">
-          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <label for="inputPassword">Password</label>
-        </div>
-      
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-2">don't have account? <a href="/auth/signup">  signup</a></p>
-        <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-        <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
-      </form>
+        <% } %>
+        <%  if(fail.length > 0) { %>
+          <div class="alert alert-danger">
+            <%= fail %>
+          </div>
+          <% } %>
+
+
+    </div>
+    <div class="form-label-group">
+      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required
+        autofocus>
+      <label for="inputEmail">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-2">don't have account? <a href="/auth/signup"> signup</a></p>
+    <div class="container">
+      <hr>
+      <div class="text-center center-block">
+        <p>Continue with</p>
+        <a href="/auth/facebook"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+        <a href="/auth/google"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+      </div>
+      <hr>
+    </div>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+  </form>
 </body>
 
 </html>

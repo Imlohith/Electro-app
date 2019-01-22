@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   maxAge: 10 * 10 * 60 * 1000,
-  keys: [keys.sessionCookie.cookie]
+  keys: [keys.cookieSession.cookie]
 }))
 
 app.use(passport.initialize())

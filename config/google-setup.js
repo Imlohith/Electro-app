@@ -23,15 +23,15 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStratagy({
         clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret,
+        clientSecret: keys.google.clientSecrect,
         callbackURL: '/auth/google/redirect',
-    }, (accessToken, refreshToken, profile, done) => {
-        console.log(profile)
+        passReqToCallback: true
+    }, (req, accessToken, refreshToken, profile, done) => {
         User.findOne({socialid: profile.id })
         .then((currentUser) => {
             if(currentUser) {
                console.log('user alredy exixts')
-               done(null, currentUser)              
+               done(null, currentUser, req.flash('back', 'welcome back user'))              
             } else {
                 const user = new User({
                     username: profile.displayName,
@@ -41,7 +41,7 @@ passport.use(
                 user.save()
                 .then((result) => {
                     console.log(result)
-                    done(null, user)
+                    done(null, user, req.flash('new', 'welcome user'))
                 })
                 .catch(err => {
                     throw err
