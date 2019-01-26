@@ -35,7 +35,7 @@ passport.use('local-login', new LocalStrategy({
             if (!user.validPass(password)) {
                 return done(null, false, req.flash('fail', 'incorrect password'));
             }
-            return done(null, user)
+            return done(null, user, req.flash('welcome', 'welcome user'))
 
         });
 

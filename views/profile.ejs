@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.0/css/mdb.min.css" />
 </head>
 <style>
         .bd-placeholder-img {
@@ -35,11 +36,6 @@
                   </li>
                 </ul>
               </nav>
-              <%  if(message.length > 0) { %>
-                <div class="alert alert-success">
-                    <%= message %>
-                </div>
-                <% } %>
               <div class="container-fluid">
                 <div class="row">
                   <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -117,23 +113,27 @@
                       </ul>
                     </div>
                   </nav>
-              
+
                   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                       <h1 class="h2">Dashboard</h1>
                       <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                          <span data-feather="calendar"></span>
-                          This week
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#elegantModalForm">
+                         <i class="fa fa-plus"></i> Create store
                         </button>
                       </div>
                     </div>
-              
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+            
+                    <%  if(welcome.length > 0) { %>
+                      <div class="alert alert-success">
+                          <%= welcome %>
+                      </div>
+                      <% } %>
+                      <%  if(back.length > 0) { %>
+                        <div class="alert alert-success">
+                            <%= back %>
+                        </div>
+                        <% } %>
               
                     <h2>Section title</h2>
                     <div class="table-responsive">
@@ -266,12 +266,45 @@
                   </main>
                 </div>
               </div>
+                    <!-- Modal -->
+            <div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <!--Content-->
+              <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center">
+                  <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Create store</strong></h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mx-4">
+                  <!--Body-->
+                  <div class="md-form mb-5">
+                    <input type="email" id="Form-email1" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="Form-email1">Store name</label>
+                  </div>
 
+                  <div class="md-form pb-3">
+                    <input type="password" id="Form-pass1" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="Form-pass1">Store number</label>
+                  </div>
+
+                  <div class="text-center mb-3">
+                    <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+                  </div>
+                </div>
+                <!--Footer-->
+              </div>
+              <!--/.Content-->
+            </div>
+            </div>
+            <!-- Modal -->
               <script src="/bower_components/jQuery/dist/jquery.min.js"></script>
               <script src="/bower_components/bootstrap/js/dist/util.js"></script>
-
+              <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+              <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.0/js/mdb.min.js"></script>
 </body>
-<script>
-   $('.toast').toast();
-</script>
 </html>
